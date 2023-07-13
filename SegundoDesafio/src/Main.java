@@ -1,12 +1,16 @@
 import java.math.BigDecimal;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(new Locale("en", "US"));
 
         BigDecimal valor = scanner.nextBigDecimal();
+
+        Locale.setDefault(Locale.US);
 
         BigDecimal nota100 = new BigDecimal("100");
         BigDecimal nota50 = new BigDecimal("50");
@@ -27,14 +31,14 @@ public class Main {
 
         System.out.println("NOTAS:");
         for (BigDecimal nota : notas) {
-            int quantidade = valor.divide(nota).intValue();
+            int quantidade = valor.divide(nota, 0, BigDecimal.ROUND_DOWN).intValue();
             System.out.println(quantidade + " nota(s) de R$" + nota);
             valor = valor.remainder(nota);
         }
 
         System.out.println("MOEDAS:");
         for (BigDecimal moeda : moedas) {
-            int quantidade = valor.divide(moeda).intValue();
+            int quantidade = valor.divide(moeda, 0, BigDecimal.ROUND_DOWN).intValue();
             System.out.println(quantidade + " moeda(s) de R$" + moeda);
             valor = valor.remainder(moeda);
         }
