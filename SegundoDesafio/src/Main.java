@@ -8,6 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(new Locale("en", "US"));
 
+        System.out.print("Digite o valor: ");
         BigDecimal valor = scanner.nextBigDecimal();
 
         Locale.setDefault(Locale.US);
